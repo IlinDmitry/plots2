@@ -249,6 +249,8 @@ Plots2::Application.routes.draw do
   get 'stats/wikis/:start/:end' => 'stats#wikis'
   get 'stats/comments' => 'stats#comments'
   get 'stats/comments/:start/:end' => 'stats#comments'
+  get 'stats/maps' => 'stats#maps'
+  get 'stats/maps/:start/:end' => 'stats#maps'
   get 'stats/json' => 'stats#stats_json'
   get 'feed' => 'notes#rss'
   get 'rss.xml' => 'legacy#rss'

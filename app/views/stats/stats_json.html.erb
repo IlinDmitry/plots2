@@ -1,4 +1,4 @@
-<h2 align="center">  Stats in Json </h2>
+<h2 align="center">  Download Raw Stats </h2>
 <hr>
 <div class="row">
 <div class="col-md-6">
@@ -15,35 +15,45 @@
 </div>
 </div>
 <br>
-<h5>Stats from From <%= params[:start] %> to <%= params[:end] %></h5>
+<% unless params[:start].nil? %>
+    <h5>Stats from From <%= params[:start] %> to <%= params[:end] %></h5>
+<% end%>
 <br>
+
 <div class="btn-group" align="center" role="group" aria-label="Basic example">
         <%= link_to stats_path do %>
         <button type="button" class="btn btn-secondary" title=" Back to Stats">
-            <i class="fa fa-arrow-left fa-2x"  style="color:#0088cc;"> </i>
-        </button>
-    <% end %>
-
-        <%= link_to stats_notes_path(start: params[:start], end: params[:end]) do  %>
-        <button type="button" class="btn-lg btn-secondary" title="Download notes">
-            Download notes
-        </button>
-    <% end %>
-
-        <%= link_to stats_wikis_path(start: params[:start], end: params[:end]) do  %>
-        <button type="button" class="btn-lg btn-secondary" title="Download wikis">
-            Download wikis
-        </button>
-    <% end %>
-
-        <%= link_to stats_comments_path(start: params[:start], end: params[:end]) do  %>
-        <button type="button" class="btn-lg btn-secondary" title="Download wikis">
-            Download comments
+            <i class="fa fa-arrow-left fa-2x"  style="color:#31b0d5;"> </i>
         </button>
     <% end %>
 </div>
-<br> <br>
-<% @hash.each do |k,v|  %>
-    <p><b><%= k %> </b></p>
-    <p><%= v %> </p>
-<% end %>
+
+<div class="btn-group">
+    <button type="button" class="btn btn-lg btn-info">Select to download as json</button>
+    <button type="button" class="btn btn-lg btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu">
+        <li>
+            <%= link_to "Notes", stats_notes_path(start: params[:start], end: params[:end]) %>
+        </li>
+        <li>
+            <%= link_to "Wikis", stats_wikis_path(start: params[:start], end: params[:end]) %>
+        </li>
+        <li>
+            <%= link_to "Comments", stats_comments_path(start: params[:start], end: params[:end]) %>
+        </li>
+        <li>
+            <%= link_to "Maps", stats_maps_path(start: params[:start], end: params[:end]) %>
+        </li>
+    </ul>
+</div>
+&ensp;
+<div class="btn-group">
+    <button type="button" class="btn btn-lg btn-info">Select to download as CSV</button>
+    <button type="button" class="btn btn-lg btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+    </button>
+</div>
